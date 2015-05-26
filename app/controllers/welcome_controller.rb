@@ -1,25 +1,25 @@
-class WelcomeController < ApplicationController
-  before_action :get_yoyaku_app   
+class WelcomeController < ApplicationController   
 
   def index
     
   end
-  def about
-    @sitepage = Sitepage.where(:name => 'about').order_by(:id.desc).first
-
-    set_meta_tags :title => t(:about_this_site)
-    #set_meta_tags :description => t(:about_this_site)
-    set_meta_tags :canonical => "/about"
-
-    set_meta_tags :keywords => t(:about_this_site) + ', ' + t(:default_page_keywords)
-
-    set_meta_tags :og => {
-                          :title    =>  t(:about_this_site),
-                          :type     => 'article' ,
-                          :url      => 'https://' + @site_domain + '/about/',
-    }
+  def delivery
+   
 
   end
+
+  def payment
+   
+
+  end
+
+  def the_team
+   
+
+  end
+
+
+
   def tos
     @sitepage = Sitepage.where(:name => 'tos').order_by(:id.desc).first
 

@@ -17,4 +17,71 @@ a{
 a:hover{
 	background-color:transparent;
 	color: #fedede
+
+table tbody tr td{
+	background-color:cyan;
+}
+
+.uk-homepage-background {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+}
+
+.uk-homepage-background .uk-container .uk-form{
+	background-color: rgba(0, 0, 0, 0.70);
+	padding: 20px 20px 50px 20px;
+	border-radius: 15px;
+	max-width:70%;
+	margin:0 auto;
+}
+
+.search-box-instructions {	
+	color: #FFFFFF;
+	font-size: 1.4em;
+	padding: 0 0 15px 0;
+}
+
+.uk-footer {
+  font-size: 0.9em;
+}
+
+.uk-footer h3 {
+  font-size: 1.2em;
+  margin: 0;
+  font-weight:bold;
+}
+
+.uk-footer ul, {
+  margin: 0 0 10px 0;
+  padding: 0 0 0 5px;
+}
+
+.uk-footer li {
+ list-style-type: none;
+ padding: 0 0 0 10px;
+}
+
+nav.uk-navbar {
+	background-color: #FFFFFF;
+	height: 100px;
+}
+
+ul.uk-navbar-nav{
+	float:right !important;
+}
+
+.lefiores-subnav {
+	vertical-align: bottom;
+	line-height:155px;
+	margin: 0 20px 0 0;
+}
+
+.lefiores-subnav li a{
+	font-size: 1.6em;
+}
+
+.lefiores-subnav li a:hover {
+	background-color: transparent !important;
 }

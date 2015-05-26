@@ -1,34 +1,20 @@
 %nav.uk-navbar
-  %a.uk-navbar-brand{:href => "#"} Lefiores
+  =link_to root_url,:class => "uk-navbar-brand" do
+    .uk-float-left=image_tag asset_path('logo-lefiores-the-florist-marketplace.png')
   %ul.uk-navbar-nav
-    %li.uk-parent.uk-active{"data-uk-dropdown" => ""}
-      %a{:href => ""}
-        %i.uk-icon-home
-        Home
-      .uk-dropdown.uk-dropdown-navbar
-        %ul.uk-nav.uk-nav-navbar
-          %li
-            %a{:href => "#"} Item
-          %li
-            %a{:href => "#"} Another item
-          %li.uk-nav-header Header
-          %li
-            %a{:href => "#"} Item
-          %li
-            %a{:href => "#"} Another item
-          %li.uk-nav-divider
-          %li
-            %a{:href => "#"} Separated item
-  .uk-navbar-content
-    SomeTest
-    = succeed "." do
-      %a{:href => "#"} Not Test
-  .uk-navbar-content.uk-hidden-small
-    %form.uk-form.uk-margin-remove.uk-display-inline-block
-      %input{:placeholder => "Search", :type => "text"}/
-      %button.uk-button.uk-button-primary Submit
-  .uk-navbar-content.uk-navbar-flip.uk-hidden-small
     -if current_user.present?
+
+      .uk-navbar-content.uk-navbar-flip.uk-hidden-small
+        - if !@store_branches.nil? && @store.has_branch?
+          -if current_user.has_store && current_user.role == :florist 
+            You are viewing branch: 
+            .uk-button-dropdown{"data-uk-dropdown" => ""}
+              .uk-button-group
+                %button.uk-button.uk-button-success
+                  = @branch.sub_name
+                %div.data-uk-dropdown
+                  %a.uk-button.uk-button-success
+                    %i.uk-icon-caret-down                             
       - if !@store_branches.nil? && @store.has_branch?
         -if current_user.has_store && current_user.role == :florist 
           You are viewing branch: 
@@ -49,7 +35,7 @@
                     %li
                       %a{:href => "/store/dashboard"}                   
                         = branch.sub_name                  
-                  
+
       .uk-button-dropdown{"data-uk-dropdown" => ""}
         %button.uk-button
           %i.uk-icon-ellipsis-v          
@@ -71,9 +57,15 @@
                 Logout
       
     -else
-      .uk-button-group
-        %a.uk-button.uk-button-primary{:href => "/register?type=florist"} Florist
-        %a.uk-button.uk-button-primary{:href => "/users/new?type=user"} Customer
+      %ul.uk-subnav.uk-subnav-pill.lefiores-subnav
+        %li
+          %a{:href => "/register?type=florist"} Florist Login
       
-      -#%button.uk-button.uk-button-primary Login
+      -#
+        .uk-button-group
+
+          %a.uk-button.uk-button-primary{:href => "/register?type=florist"} Florist
+          %a.uk-button.uk-button-primary{:href => "/users/new?type=user"} Customer
+        
+        -#%button.uk-button.uk-button-primary Login
       
