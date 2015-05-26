@@ -1,7 +1,7 @@
 class BranchController < ApplicationController
   before_filter :require_login
   before_action :set_store
-  before_action :set_branch, only:[:create,:index]  
+  before_action :set_branch, only:[:index]  
   before_action :set_days, only:[:new, :create,:index,:edit]
 
   #dashboard
@@ -29,45 +29,28 @@ class BranchController < ApplicationController
      
     end
 
-    @branch = Store::Branch.new   
     @user = User.where(:id => current_user.id).first    
     @store = Store.where(:user_id => current_user.id.to_s).first 
     @store_branches = @store.branches
      
   end
 
-  #def create
-  #	@branch = Store::Branch.new(branch_params)  	  	  
-	#  @branch.store_id = @store.id
-	  
-	#  if @branch.save  	
-  #    @store.branch = @branch  	  	 		  			
- # 		uri = root_url
- # 		redirect_to uri, :notice => 'Your shop is now ready and you can now start selling!'+ @store.branch.sub_name and return	  	
-  #  else
-  #    render :new
-  #  end	  
-  #end  
-
   # POST /admin/companies
   # POST /admin/companies.json
   def create    
+    @branch = Store::Branch.new(branch_params)
     if @store.id.present?
       @branch.store_id = @store.id 
     else
       redirect_to root_url, :notice => 'no store id' + @store.id.to_s
     end
-    
-    if @branch.save!      
-      #if @store.update_attribute(:has_branch, true)
-        #@store.current_branch_id = @branch.id.to_s;
-        #@store.save
-      uri = '/store/branch/' + @branch.id.to_s + '/edit_delivery_areas'
-      #uri = 'store/branch/' + @branch.id.to_s + '/edit_delivery_areas';        
-      redirect_to uri, :notice => 'Your shop is now ready and you can now start selling!'+ @branch.sub_name and return              
-      #else
-      #  redirect_to root_url, :notice => 'Unable to update store'+ @branch.sub_name and return              
-      #end  
+
+    if @branch.save!    
+      @store.has_branch = true 
+      @store.current_branch_id = @branch.id
+      @store.save 
+      uri = '/store/branch/' + @branch.id.to_s + '/edit_delivery_areas'      
+      redirect_to uri and return                    
     else              
         redirect_to root_url, :notice => 'Unable to save branch'+ @branch.sub_name and return              
     end    
@@ -78,19 +61,35 @@ class BranchController < ApplicationController
   end
 
   def update_delivery_areas
-    set_branch
+    @branch = Store::Branch.where(:id => params[:branch_id]).first
 
     area_id = params[:branch][:delivery_area]
-    delivery_area = Location.where(:id => area_id).first
-    
-    @branch.delivery_areas.push(delivery_area)    
+    @delivery_area = Location.where(:id => area_id).first
 
-    if @branch.save!      
+    # area = []
+    # area.push(@delivery_area)
+    # if @delivery_area.present?
+    #   @branch.delivery_areas = area
+    # end
+    if @delivery_area.present?      
+      @branch.delivery_areas.push(@delivery_area)      
+    else
+      render :edit_delivery_areas, :alert => "delivery area not found"
+    end
+
+    if @branch.save   
       if @store.update_attribute(:has_branch, true)
         @store.current_branch_id = @branch.id.to_s;
         @store.save
-        uri = '/store/dashboard/'
-        redirect_to uri, :notice => 'Your shop is now ready and you can now start selling!'+ @branch.sub_name and return              
+        if @branch.delivery_areas.count <= 1
+          uri = '/store/dashboard/'
+          msg = 'Your shop is now ready and you can now start selling!'
+        else
+          uri = '/store/'+@branch.id+'/edit'
+          msg = 'Delivery area added'
+          set_branch
+        end
+        redirect_to uri, :notice => msg and return              
       else
        redirect_to root_url, :notice => 'Unable to update store'+ @branch.sub_name and return              
       end   

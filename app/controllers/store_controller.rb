@@ -26,7 +26,7 @@ class StoreController < ApplicationController
       if @user.update_attribute(:has_store, true)
         #uri = '/' + @store.name + '/dashboard'
         uri = '/store/dashboard'
-        redirect_to uri, :notice => 'Your shop is now ready and you can now start selling!' and return        
+        redirect_to uri, :notice => 'Lets create your main branch' and return        
         #format.json { render :show, status: :created, location: @store }
       else
         uri = '/store/dashboard'

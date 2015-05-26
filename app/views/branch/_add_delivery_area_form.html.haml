@@ -1,0 +1,25 @@
+= form_for(@branch, :html=> {:multipart => true,:class=> 'uk-form uk-form-stacked', :branch_id => @branch.id},:url => {:controller => 'branch',:action=>"update_delivery_areas",:method => :post, :branch_id => @branch.id}) do |f|
+  - if @branch.errors.any?
+    #error_explanation
+    = pluralize(@branch.errors.count, "error")
+    prohibited this @branch from being saved:
+
+  %ul
+  - @branch.errors.full_messages.each do |message|
+    %li= message
+  .uk-form-row
+    = f.label :delivery_area, :class => "uk-form-label"    
+    .uk-form-controls
+      = select_tag 'branch[delivery_area]', options_from_collection_for_select(Location.all, "id", "name"), {'class' => 'uk-width-4-4'}  
+  .uk-form-row
+    = f.label :delivery_fee, :class => "uk-form-label"        
+    .uk-form-controls
+      RM
+      = f.text_field :delivery_fee,:type => "number",:value=> 0, :min => "0", :max => "9999", :step => "0.10", :size => "4",:title => "CDA Currency Format - no RM sign and no comma(s) - cents (.##) are optional"                  
+    %small
+      %em
+        0 if there is no delivery fee otherwise please put a numerical value in RM
+  
+  .uk-form-row
+    .uk-form-controls
+      = f.submit 'Add Delivery Area', {:class => 'uk-button uk-button-primary uk-width-1-1'}

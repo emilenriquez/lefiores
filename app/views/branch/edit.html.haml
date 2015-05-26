@@ -1,3 +1,5 @@
+%h2.head-title
+  Branch Details
 = form_for(@branch, :html=> {:multipart => true, :class=>'uk-form'},:url => {:controller => 'branch',:action=>"update", :class => 'uk-form'}) do |f|
   - if @branch.errors.any?
     #error_explanation
@@ -69,3 +71,35 @@
   
   .actions
     = f.submit 'Save', {:class => 'uk-button'}
+
+%h2.head-title
+  Delivery Areas
+= render 'add_delivery_area_form'
+%table.uk-table.uk-table-hover.uk-table-striped
+  %caption
+    =@store.name + ' Delivery Areas'
+  %thead
+    %th
+      Postal Code
+    %th
+      City
+    %th
+      State
+    %th
+      Full Location name
+    %th
+      Delivery Price
+  %tbody
+    -@branch.delivery_areas.each do |area|
+      %tr
+        %td
+          =area.zipcode
+        %td
+          =area.city.name
+        %td
+          =area.state.name
+        %td
+          =area.name
+        %td
+          =area.delivery_fee  
+

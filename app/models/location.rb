@@ -4,16 +4,16 @@ class Location
   include Mongoid::Timestamps
   #field :name, type: String
   field :zipcode, type: String
-  field :delivery_fee, type: String
+  field :delivery_fee, type: String, default: 0
   field :delivery_areas, type: Array
   field :keywords, type: String
   field :name, type: String
-  field :city, type:Object
-  field :state, type:Object
+  #field :city, type:Object
+  #field :state, type:Object
   
 
-  field :state_id, type: Object
-  field :city_id, type: Object
+  field :state_id, type: String
+  field :city_id, type: String
   # def state
   #    Location::State.where(:id=>self.state_id).first
   # end
@@ -26,13 +26,21 @@ class Location
   #has_one :state, :class => 'Location::State'
   #has_many :location_state, :class_name => 'Location::State'
 
-  has_one :location_city, :class_name => 'Location::City'
+  has_and_belongs_to_many :location_city, :class_name => 'Location::City'
+  has_and_belongs_to_many :store_branch, :class_name => 'Store::Branch'
   has_one :location_state, :class_name => 'Location::State'  
 
   after_find :set_city_and_state
   def set_city_and_state
-    self.city = Location::City.where(:id => self.city_id.to_s).first    
-    self.state = Location::State.where(:id => self.state_id.to_s).first    
+   # self.city = Location::City.where(:id => self.city_id.to_s).first    
+   # self.state = Location::State.where(:id => self.state_id.to_s).first    
+  end
+
+  def city
+    Location::City.where(:id => self.city_id.to_s).first    
+  end
+  def state
+    Location::State.where(:id => self.state_id.to_s).first    
   end
 
   def self.import(file)        
