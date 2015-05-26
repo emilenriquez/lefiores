@@ -5,16 +5,18 @@
     -if current_user.present?
 
       .uk-navbar-content.uk-navbar-flip.uk-hidden-small
-        - if !@store_branches.nil? && @store.has_branch?
-          -if current_user.has_store && current_user.role == :florist 
-            You are viewing branch: 
-            .uk-button-dropdown{"data-uk-dropdown" => ""}
-              .uk-button-group
-                %button.uk-button.uk-button-success
-                  = @branch.sub_name
-                %div.data-uk-dropdown
-                  %a.uk-button.uk-button-success
-                    %i.uk-icon-caret-down                             
+        -#
+          - if !@store_branches.nil? && @store.has_branch?
+            -if current_user.has_store && current_user.role == :florist 
+              You are viewing branch: 
+              .uk-button-dropdown{"data-uk-dropdown" => ""}
+                .uk-button-group
+                  %button.uk-button.uk-button-success
+                    - if @branch.present?
+                      = @branch.sub_name
+                  %div.data-uk-dropdown
+                    %a.uk-button.uk-button-success
+                      %i.uk-icon-caret-down                             
       - if !@store_branches.nil? && @store.has_branch?
         -if current_user.has_store && current_user.role == :florist 
           You are viewing branch: 

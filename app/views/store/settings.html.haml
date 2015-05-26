@@ -1,83 +1,84 @@
-= render 'branch/dashboard_tabs'
--#= render 'branch/dashboard_settings_subtabs'
+.uk-container.uk-container-center
+  = render 'branch/dashboard_tabs'
+  -#= render 'branch/dashboard_settings_subtabs'
 
-%h2.head-title
-  = @store.name + ' Store Details'
--if @store.store_logo_url.present?
-  = image_tag @store.store_logo_url,{:width => "180"}
--else
-  Select one of the photo's below to set as your store logo
-= render 'image_uploader'  
-%dl.uk-description-list-line
-  %dt
-    %strong 
-      Business Registration Number
-  %dd 
-    = @store.business_reg_no
-  %dt 
-    %strong
-      Contact Number
-  %dd 
-    = @store.contact_no
-  
-  %dt
-    %strong 
-      Page Url
-  %dd 
-    = link_to @site_domain + '/florist/' + @store.page_url ,'http://' + @site_domain + '/florist/' + @store.page_url
-
-
-= link_to 'Edit Store Details', '/store/edit', {:class => 'uk-button uk-button-primary'}
-
-%hr
-
-- if @store.branches.size == 1
   %h2.head-title
-    = @branch.sub_name
-    Branch Detail  
-  
+    = @store.name + ' Store Details'
+  -if @store.store_logo_url.present?
+    = image_tag @store.store_logo_url,{:width => "180"}
+  -else
+    Select one of the photo's below to set as your store logo
+  = render 'image_uploader'  
   %dl.uk-description-list-line
     %dt
       %strong 
-        Cut Off time
+        Business Registration Number
     %dd 
-      = @branch.cut_off_time
-      - if !@branch.cut_off_time?
-        %em
-          you haven't set your branch's cut off time
-    %dt
-      %strong 
-        Business Hours
-    %dd 
-      -if @business_hours.present?
-        =@business_hours
+      = @store.business_reg_no
     %dt 
       %strong
         Contact Number
     %dd 
-      = @branch.contact_no
-      -if !@branch.contact_no?
-        %em
-          Branch's contact number is not set
-    %dt 
-      %strong
-        Postal Code
-    %dd 
-      = @branch.postal_code
-      -if !@branch.postal_code?
-        %em
-          Branch's postal code is not set
+      = @store.contact_no
+    
     %dt
       %strong 
-        Delivery Areas
-    %dd       
-      - @branch.delivery_areas.each do |area|
-        =area.name
-      - if @branch.delivery_areas.size < 1
-        %em
-          you haven't set your branch's delivery area. your customer's might not be aware of your delivery area
-        %a.uk-button.uk-button-primary{:href => "/store/branch/#{@branch.id}/edit_delivery_areas"}
-          Setup Delivery Areas  
+        Page Url
+    %dd 
+      = link_to @site_domain + '/florist/' + @store.page_url ,'http://' + @site_domain + '/florist/' + @store.page_url
 
-= link_to 'Edit ' + @branch.sub_name + ' Branch Details', '/store/' + @branch.id + '/edit', {:class => 'uk-button uk-button-primary'}    
-.uk-margin-bottom
+
+  = link_to 'Edit Store Details', '/store/edit', {:class => 'uk-button uk-button-primary'}
+
+  %hr
+
+  - if @store.branches.size == 1
+    %h2.head-title
+      = @branch.sub_name
+      Branch Detail  
+    
+    %dl.uk-description-list-line
+      %dt
+        %strong 
+          Cut Off time
+      %dd 
+        = @branch.cut_off_time
+        - if !@branch.cut_off_time?
+          %em
+            you haven't set your branch's cut off time
+      %dt
+        %strong 
+          Business Hours
+      %dd 
+        -if @business_hours.present?
+          =@business_hours
+      %dt 
+        %strong
+          Contact Number
+      %dd 
+        = @branch.contact_no
+        -if !@branch.contact_no?
+          %em
+            Branch's contact number is not set
+      %dt 
+        %strong
+          Postal Code
+      %dd 
+        = @branch.postal_code
+        -if !@branch.postal_code?
+          %em
+            Branch's postal code is not set
+      %dt
+        %strong 
+          Delivery Areas
+      %dd       
+        - @branch.delivery_areas.each do |area|
+          =area.name
+        - if @branch.delivery_areas.size < 1
+          %em
+            you haven't set your branch's delivery area. your customer's might not be aware of your delivery area
+          %a.uk-button.uk-button-primary{:href => "/store/branch/#{@branch.id}/edit_delivery_areas"}
+            Setup Delivery Areas  
+
+  = link_to 'Edit ' + @branch.sub_name + ' Branch Details', '/store/' + @branch.id + '/edit', {:class => 'uk-button uk-button-primary'}    
+  .uk-margin-bottom

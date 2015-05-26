@@ -1,55 +1,56 @@
-= render 'branch/dashboard_tabs'
-.uk-margin-top
-= render 'catalog/subnavs', :catalog_subnav_active_menu => 'index'
--if @products.empty?
-  %h1.uk-text-center
-    Ready to start selling? It's as easy as uploading your Facebook photos,or your money back!
-  .uk-container-center.uk-text-center
-    %button.uk-button.uk-button-primary.uk-button-large
-      Add Product
--else
-  %table.uk-table.uk-table-hover.uk-table-striped
-    %thead
-      %th
-        Product ID
-      %th
-        Image
-      %th
-        Name
-      %th
-        Category
-      %th
-        Price (RM)
-      %th
-        Status
-      %th
-        Action
-    %body      
-      -@products.each do |product|
-        %tr
-          %td.uk-width-2-10
-            =product.product_id
-          %td.uk-width-1-10
-            =image_tag product.pic.x150.url.to_s, :width => 50          
-          %td.uk-width-1-10
-            =product.name
-          %td.uk-width-2-10
-            -if product.category.present?
-              =product.category.name
-          %td.uk-width-1-10
-            =product.price
-          %td.uk-width-2-10
-            =product.status
-          %td.uk-width-1-10
-            .uk-grid.uk-grid-collapse.uk-text-center              
-              .uk-width-1-3
-                -#=link_to 'deactivate', '/admin/categories/' + product.id + '/edit'                              
-                =link_to '/store/' + @store.id + '/catalog/' + product.id.to_s + '/deactivate', method: :patch,:class=>'uk-button',:title => 'deactivate product' do
-                  %i.uk-icon-ban
-              .uk-width-1-3
-                =link_to '/store/' + @store.id + '/catalog/' + product.id.to_s + '/edit', method: :get,:class=>'uk-button'do
-                  %i.uk-icon-pencil                
-              .uk-width-1-3
-                - if can? :delete, Store
-                  =link_to '/store/' + @store.id + '/catalog/' + product.id.to_s + '/destroy', method: :delete, data: { confirm: 'Are you sure you want to delete this product?' }, :class=>'uk-button' do
-                    %i.uk-icon-trash                
+.uk-container.uk-container-center
+  = render 'branch/dashboard_tabs'
+  .uk-margin-top
+  = render 'catalog/subnavs', :catalog_subnav_active_menu => 'index'
+  -if @products.empty?
+    %h1.uk-text-center
+      Ready to start selling? It's as easy as uploading your Facebook photos,or your money back!
+    .uk-container-center.uk-text-center
+      %button.uk-button.uk-button-primary.uk-button-large
+        Add Product
+  -else
+    %table.uk-table.uk-table-hover.uk-table-striped
+      %thead
+        %th
+          Product ID
+        %th
+          Image
+        %th
+          Name
+        %th
+          Category
+        %th
+          Price (RM)
+        %th
+          Status
+        %th
+          Action
+      %body      
+        -@products.each do |product|
+          %tr
+            %td.uk-width-2-10
+              =product.product_id
+            %td.uk-width-1-10
+              =image_tag product.pic.x150.url.to_s, :width => 50          
+            %td.uk-width-1-10
+              =product.name
+            %td.uk-width-2-10
+              -if product.category.present?
+                =product.category.name
+            %td.uk-width-1-10
+              =product.price
+            %td.uk-width-2-10
+              =product.status
+            %td.uk-width-1-10
+              .uk-grid.uk-grid-collapse.uk-text-center              
+                .uk-width-1-3
+                  -#=link_to 'deactivate', '/admin/categories/' + product.id + '/edit'                              
+                  =link_to '/store/' + @store.id + '/catalog/' + product.id.to_s + '/deactivate', method: :patch,:class=>'uk-button',:title => 'deactivate product' do
+                    %i.uk-icon-ban
+                .uk-width-1-3
+                  =link_to '/store/' + @store.id + '/catalog/' + product.id.to_s + '/edit', method: :get,:class=>'uk-button'do
+                    %i.uk-icon-pencil                
+                .uk-width-1-3
+                  - if can? :delete, Store
+                    =link_to '/store/' + @store.id + '/catalog/' + product.id.to_s + '/destroy', method: :delete, data: { confirm: 'Are you sure you want to delete this product?' }, :class=>'uk-button' do
+                      %i.uk-icon-trash                
