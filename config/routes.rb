@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'delivery' => 'welcome#delivery'
   get 'payment' => 'welcome#payment'
   get 'the-lefiores-team' => 'welcome#the_team'
+  get 'substitution' => 'welcome#substitution'
+  get 'customer-service' => 'welcome#customer_service'
 
   get 'login' => 'user_sessions#new'
   post 'login' => 'user_sessions#create'

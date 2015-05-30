@@ -1,5 +1,19 @@
-%h1 Be part of our growing florist community   
+%div.uk-homepage-background{:style =>"background-image: url('#{asset_path('lefiores-florist-sign-up-bg.jpg') }' ); padding-top:100px;"}
+  .uk-container.uk-container-center
+    .uk-grid
+      .uk-width-6-10
+        = render 'form';
 
-= render 'form';
+      .uk-width-4-10.black-transparent-bg.florist-features
+        .uk-margin-large-top
+          %h2 Sell what's on your catalog right away.
+        .uk-margin-large-top
+          %h2 No setup fees, no commitment &   no contract.
+        .uk-margin-large-top
+          %h2 No other hidden payment gateway, listing or stupid final value fees.
+        .uk-margin-large-top
+          %h2 Keep 90% of what you sell. 
 
-=link_to 'have an account already? Login', '/login', {:alt => 'alt', :title => 'title'} 
+    .uk-margin-large-bottom
+
+

@@ -1,23 +1,22 @@
 class WelcomeController < ApplicationController   
 
   def index
-    
   end
-  def delivery
-   
 
+  def delivery
   end
 
   def payment
-   
+  end
 
+  def substitution
+  end
+
+  def customer_service
   end
 
   def the_team
-   
-
   end
-
 
 
   def tos
