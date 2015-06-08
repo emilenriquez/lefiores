@@ -12,11 +12,23 @@ class WelcomeController < ApplicationController
   def substitution
   end
 
+  def sitemap
+  end
+ 
   def customer_service
+  end
+
+  def contact_us
   end
 
   def the_team
   end
+
+  def copyrights
+  end
+
+  def privacy_disclaimers
+  end      
 
 
   def tos
