@@ -29,12 +29,29 @@ class Location
   has_and_belongs_to_many :location_city, :class_name => 'Location::City'
   has_and_belongs_to_many :store_branch, :class_name => 'Store::Branch'
   has_one :location_state, :class_name => 'Location::State'  
+  
 
   after_find :set_city_and_state
   def set_city_and_state
    # self.city = Location::City.where(:id => self.city_id.to_s).first    
    # self.state = Location::State.where(:id => self.state_id.to_s).first    
   end
+
+
+  ### for redis (will implement after mvp)
+  #after_save :update_location_title_redis_index
+  # def update_location_title_redis_index
+  #   begin 
+  #     if Location::TitleInvertedIndex.new.exists?
+  #       # if there is index, it'll add new.        
+  #       Location::TitleInvertedIndex.new.add( self )
+  #     else
+  #       # if there is no indeces, it'll make all location title indexes.
+  #       Location::TitleInvertedIndex.new.make_location_title_indexes
+  #     end
+  #   rescue
+  #   end
+  # end
 
   def city
     Location::City.where(:id => self.city_id.to_s).first    

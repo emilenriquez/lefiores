@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :branches, :controller => 'branch' ,:path => 'branch'
   resources :tests
 
+  ##### api
+  post 'api/search_locations_by_zipcode'
+
   ######### oururls
   get 'delivery' => 'welcome#delivery'
   get 'payment' => 'welcome#payment'
@@ -69,6 +72,10 @@ Rails.application.routes.draw do
   patch 'store/:store_id/catalog/:product_id/deactivate' => 'products#deactivate'
   
   root 'welcome#index'
+  post 'search/' => 'welcome#search' #view
+  ######## for users
+  #search flower shops by zipcode
+
 
   namespace :admin do
     root 'welcome#index'

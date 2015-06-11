@@ -1,10 +1,16 @@
 %div.uk-homepage-background{:style =>"background-image: url('#{asset_path('lefiores-florist-marketplace-backdrop-01.jpg') }' ); height:450px;padding-top:100px;"}
   .uk-container.uk-container-center
-    %form.uk-form
-      .uk-grid
+    .lightbox
+      .uk-grid 
         .uk-width-1-1
           %div.search-box-instructions
             Type in the postal code and we'll match you up with the local florists there!
-          %input.uk-width-1-1.uk-form-large{:type => "text", :placeholder => "Type Postal Code or City Name here..."}
+          = form_for(@location, :url => {:controller=>'welcome',:action=>'search'}, :html=>{class: 'uk-panel uk-panel-box uk-form'}) do |f|
+            %div.uk-form-row.uk-autocomplete.uk-width-1-1{'style'=>'','data-uk-autocomplete'=>"{source:'/api/search_locations_by_zipcode.json'}"}
+              = f.text_field :zipcode, :placeholder => 'Type postal code here', :class => 'uk-width-8-10 uk-form-large'
+              = f.button 'search',  :class => 'uk-width-8-10 uk-form-large'
+            -#
+              %div.uk-form-row.uk-autocomplete.uk-width-1-1{'style'=>'','data-uk-autocomplete'=>"{source:'/game/autocomplete.json'}"}
+                        
 
 

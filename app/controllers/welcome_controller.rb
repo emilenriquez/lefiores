@@ -1,13 +1,14 @@
 class WelcomeController < ApplicationController   
 
   def index
-    
+    @location = Location.new
   end
   def delivery
    
 
   end
-
+  def search
+  end  
   def payment
    
 
