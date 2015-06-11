@@ -1,40 +1,31 @@
-= form_for @user, :url => { :action => :create, :type => 'florist'} do |f|
+= form_for @user,:html => {:class => "uk-form uk-form-stacked"}, :url => { :action => :create, :type => 'florist'} do |f|
   - if @user.errors.any?
     #error_explanation
       %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
-  
-  .uk-form-row
-    %label.uk-form-label{:for => "form-s-it"} Email
-    .uk-form-controls.uk-width-1-1 
-      = f.email_field :email, autofocus: true ,:placeholder => 'Email Address', :id => 'form-s-it'
-      -#%input#form-s-it{:placeholder => "youremail@example.com", :type => "email", }
-  .uk-form-row
-    %label.uk-form-label{:for => "form-s-it"} Password
-    .uk-form-controls
-      .uk-form-password
-        = f.password_field :password ,:placeholder => 'password', :id => 'form-s-it'
-        -#%input{:type => "password", :value => ""}/
+
+  .florist-login
+    %h2 Be part of our growing florist community   
+    
+    .uk-form-row
+      %label.uk-form-label{:for => "E-mail Address"} E-mail Address
+      .uk-form-controls
+        = f.email_field :email, autofocus: true ,:placeholder => 'Email Address', :id => 'form-s-it',:class => "uk-width-1-1"
+    .uk-form-row
+      %label.uk-form-label{:for => "Password"} Password
+      .uk-form-controls.uk-form-password
+        = f.password_field :password, class: "uk-width-1-1"
         %a.uk-form-password-toggle{"data-uk-form-password" => "", :href => ""} Show
-  .uk-form-row
-    %label.uk-form-label{:for => "form-s-it"} Confirm Password
-    .uk-form-controls
-      .uk-form-password
-        -#%input{:type => "password", :value => ""}/
-        = f.password_field :password_confirmation ,:placeholder => 'confirm password', :id => 'form-s-it'
-        %a.uk-form-password-toggle{"data-uk-form-password" => "", :href => ""} Show
-    = f.submit 'Save'  
--#          
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label 'Password'
-    = f.text_field 'password'
-  .field
-    = f.label :password_confirmation
-    = f.text_field :password_confirmation
-  .actions
-    = f.submit 'Save'
+
+
+      .uk-margin-large-top
+      = f.button 'Sign Me Up Now',:type => "submit", :class => "uk-button uk-button-primary uk-width-1-2 uk-border-rounded uk-align-center"
+      
+    .uk-text-center By signing up, I agree to the Terms &amp; Conditions
+    .uk-margin-top
+    .uk-text-center 
+      If you are already registered, 
+      =link_to 'login here', '/login',  :title=>'FLORIST LOGIN'
+

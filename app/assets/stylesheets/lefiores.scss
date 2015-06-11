@@ -59,7 +59,7 @@ a:hover{
   font-weight:bold;
 }
 
-.uk-footer ul, {
+.uk-footer ul, {	
   margin: 0 0 10px 0;
   padding: 0 0 0 5px;
 }
@@ -90,4 +90,37 @@ ul.uk-navbar-nav{
 
 .lefiores-subnav li a:hover {
 	background-color: transparent !important;
+}
+
+.florist-login, .florist-login h2{
+	color: #FFFFFF;	
+}
+
+.florist-features, .florist-features h2{
+	color: #FFFFFF;
+}
+
+.black-transparent-bg {
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 20px 20px 50px;
+	border-radius: 15px;
+	max-width: 70%;
+	margin: 0px auto;
+}
+
+.uk-form-password {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.uk-form-password-toggle {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -6px;
+    font-size: 13px;
+    line-height: 13px;
+    color: #999;
 }

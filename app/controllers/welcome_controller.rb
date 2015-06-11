@@ -3,22 +3,34 @@ class WelcomeController < ApplicationController
   def index
     @location = Location.new
   end
-  def delivery
-   
 
+  def delivery
   end
   def search
   end  
   def payment
-   
+  end
 
+  def substitution
+  end
+
+  def sitemap
+  end
+ 
+  def customer_service
+  end
+
+  def contact_us
   end
 
   def the_team
-   
-
   end
 
+  def copyrights
+  end
+
+  def privacy_disclaimers
+  end      
 
 
   def tos

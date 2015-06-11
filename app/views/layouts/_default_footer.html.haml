@@ -4,25 +4,34 @@
       %h3 SHOPPING WITH US
       %ul
         %li 
-          =link_to 'Customer Service', '#'
+          =link_to 'Customer Service', '/customer-service', :title=>'CUSTOMER SERVICE'
         %li 
-          =link_to 'Delivery', '/delivery', :title=>'DELIVERY'
-        %li Payment
-        %li Substitution
+          =link_to 'Delivery', '/delivery',  :title=>'DELIVERY'
+        %li 
+          =link_to 'Payment', '/payment',  :title=>'PAYMENT'
+        %li
+          =link_to 'Substitution', '/substitution',  :title=>'SUBSTITUTION'
+        %li
+          =link_to 'Sitemap', '#',  :title=>'VIEW THE FAMILY TREE OF LEFIORES'  
+
     .uk-width-1-3
       %h3 COMPANY
       %ul
-        %li The Team
-        %li Contact Us
-        %li Are You a Florist?
+        %li
+          =link_to 'The Team', '/the-lefiores-team',  :title=>'BEHIND THE SCENES'
+        %li
+          =link_to 'Contact Us', '/contact-us',  :title=>'CONTACT US'
+        %li
+          =link_to 'Are You a Florist', '/register?type=florist',  :title=>'JOIN OUR COMMUNITY OF MALAYSIAN LOCAL FLORISTS'
     .uk-width-1-3
       %h3 RIGHTS
       %ul
-        %li Copyright Policy
-        %li Disclaimers
-        %li Your Privacy
+        %li
+          =link_to 'Copyrights', '/copyrights',  :title=>'WHO OWNS WHAT'
+        %li
+          =link_to 'Privacy & Disclaimers', '/privacy-disclaimers',  :title=>'HOW WE KEEP YOUR PERSONAL DATA SAFE'        
   
   .uk-text-center.uk-margin-large-top
-    %small &nbsp;&copy 2014 - #{Time.now.year} Lefiores.com - the marketplace for real florists
+    %small &nbsp;&copy 2014 - #{Time.now.year} Lefiores.com the Marketplace for Local Asian Florists
 
   .uk-margin-bottom

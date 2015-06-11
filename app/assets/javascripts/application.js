@@ -21,5 +21,6 @@
 // for uikit
 //= require uikit.min
 //=  require uikit/upload
+//=  require uikit/form-password.min
 //=  require uikit/autocomplete
 

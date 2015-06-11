@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   get 'delivery' => 'welcome#delivery'
   get 'payment' => 'welcome#payment'
   get 'the-lefiores-team' => 'welcome#the_team'
+  get 'substitution' => 'welcome#substitution'
+  get 'customer-service' => 'welcome#customer_service'
+  get 'sitemap' => 'welcome#sitemap'
+  get 'contact-us' => 'welcome#contact_us'
+  get 'copyrights' => 'welcome#copyrights'  
+  get 'privacy-disclaimers' => 'welcome#privacy_disclaimers'
+
 
   get 'login' => 'user_sessions#new'
   post 'login' => 'user_sessions#create'
