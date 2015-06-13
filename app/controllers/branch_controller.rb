@@ -64,7 +64,7 @@ class BranchController < ApplicationController
     @branch = Store::Branch.where(:id => params[:branch_id]).first
 
     area_id = params[:branch][:delivery_area]
-    @delivery_area = Location.where(:id => area_id).first
+    @delivery_area = Store::Branch::Location.where(:id => area_id).first
 
     # area = []
     # area.push(@delivery_area)
@@ -77,6 +77,8 @@ class BranchController < ApplicationController
       render :edit_delivery_areas, :alert => "delivery area not found"
     end
 
+    @delivery_area.store_branch.push(@branch)
+    @delivery_area.save
     if @branch.save   
       if @store.update_attribute(:has_branch, true)
         @store.current_branch_id = @branch.id.to_s;

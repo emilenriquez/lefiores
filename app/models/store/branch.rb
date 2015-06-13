@@ -41,6 +41,10 @@ class Store::Branch
   
   #validates :postal_code, presence: true
   validates :sub_name, presence: true
+
+  def store
+    Store.where(:id => self.store_id).first
+  end
   
   #has_and_belongs_to_many :fav_users, :class_name => 'User'
   #has_and_belongs_to_many :recent_topic_pages, :class_name => 'Topic::Page'

@@ -5,7 +5,7 @@ class Location
   #field :name, type: String
   field :zipcode, type: String
   field :delivery_fee, type: String, default: 0
-  field :delivery_areas, type: Array
+  #field :delivery_areas, type: Array
   field :keywords, type: String
   field :name, type: String
   #field :city, type:Object
@@ -56,6 +56,9 @@ class Location
   def city
     Location::City.where(:id => self.city_id.to_s).first    
   end
+  def branches
+    return self.store_branch
+  end
   def state
     Location::State.where(:id => self.state_id.to_s).first    
   end
@@ -63,7 +66,6 @@ class Location
   def self.import(file)        
     CSV.foreach(file.path, :headers => true , :encoding => 'ISO-8859-1') do |csv|
       @location = Location.new
-
       
       #city
       @city = City.new

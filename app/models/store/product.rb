@@ -3,7 +3,7 @@ class Store::Product
   include Mongoid::Timestamps
 
   belongs_to :store, :class_name => 'Store' 
-   
+  has_one :store, :class_name => 'Store' 
   
   #field :views, :type => Integer, :default => 0
   field :price, :type => String
@@ -30,6 +30,10 @@ class Store::Product
 
   def category
     @category = Store::Product::Category.where(:id => self.product_category_id).first;
+  end
+
+  def store
+    Store.where(:id => self.store_id).first
   end
   
   #has_and_belongs_to_many :fav_users, :class_name => 'User'

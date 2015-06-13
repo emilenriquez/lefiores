@@ -2,11 +2,21 @@ class WelcomeController < ApplicationController
 
   def index
     @location = Location.new
+
   end
 
   def delivery
   end
   def search
+    @param = params[:location][:zipcode]
+    @location = Store::Branch::Location.where(:name => @param).first
+    #setup products
+    @products = []
+    @location.store_branch.each do |branch|
+      branch.store.products.each do |product|
+        @products.push(product)
+      end
+    end
   end  
   def payment
   end

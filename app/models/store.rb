@@ -15,6 +15,7 @@ class Store
 
   has_many :branches, :class_name => 'Store::Branch'
   has_many :store_images, :class_name => 'Store::Image'
+  has_many :products, :class_name => 'Store::Product'
   #has_many :images, :class_name => 'Store:key => "value", :Image'
   belongs_to :user
 
