@@ -24,3 +24,5 @@
 //=  require uikit/form-password.min
 //=  require uikit/autocomplete
 
+// for color box
+//= require colorbox-rails

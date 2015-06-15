@@ -14,5 +14,6 @@
  *= require_self
  *= require uikit.min
  *= require lefiores
+ *= require colorbox-rails
  */
 

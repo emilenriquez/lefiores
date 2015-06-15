@@ -22,6 +22,9 @@ gem 'cancancan', '~> 1.9'
 gem 'mini_magick'
 gem 'rmagick', :require => 'RMagick'
 
+#colorbox
+gem 'colorbox-rails', '~> 0.1.2'
+
 
 
 

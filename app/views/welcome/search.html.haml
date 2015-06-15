@@ -1,5 +1,4 @@
-.uk-container
-
+.uk-container.uk-width-medium-1-1.uk-container-center
   .uk-grid.uk-grid-small
     .uk-width-2-10
       .lefiores-link-box
@@ -8,25 +7,28 @@
           %li List item 2
           %li List item 3
     .uk-width-8-10
-      %h2.head-title
+      .box-heading.uk-width-1-1
         Flowers & Florists Near 
         = @location.name
-      %ul.uk-subnav.uk-subnav-pill{"data-uk-switcher" => "{connect:'#subnav-pill-content-1'}"}
-        %li.uk-active{"aria-expanded" => "true"}
+      
+      %ul.uk-tab.uk-tab-grid.uk-tab-bottom{"data-uk-switcher" => "{connect:'#subnav-pill-content-1'}", "data-uk-tab" => "true"}
+        %li.uk-active.uk-width-1-2{"aria-expanded" => "true"}
           %a{:href => "#"} Flowers
-        %li{"aria-expanded" => "false"}
+        %li.uk-width-1-2.uk-primary{"aria-expanded" => "false"}
           %a{:href => "#"} Florists
-  
+      %br
       %ul#subnav-pill-content-1.uk-switcher
         %li.uk-active{"aria-hidden" => "false"}
           -#products
           %ul.uk-thumbnav
             -@products.each do |product|  
               %li
-                .result-container 
+                .result-container.uk-border-rounded
                   .product-store-logo
-                    %img.uk-border-circle{:src => "#{product.store.store_logo_url}", :width => "50", :style => "border: 1px solid black"}                  
-                  =image_tag(product.pic.m300x320,{:width => 200, :class => "product_img"})
+                    %a{:href => "#", "data-colorbox" => "true"}
+                      %img.uk-border-circle{:src => "#{product.store.store_logo_url}", :width => "50", :style => "border: 1px solid black"}   
+                    
+                  =image_tag(product.pic.m300x320,{:width => 200, :class => "product_img myElement"})
                   .lefiores-name
                     =product.name.upcase
                   .lefiores-store-name
@@ -115,5 +117,31 @@
   .result-container .product_img{
     border: 1px dashed rgb(228, 228, 228);
   }
+
+  .box-heading, .tabs .tab-heading {
+    font-size: 15px;
+    line-height: 18px;
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 10px 10px;
+    text-align: center;
+    background: #eb5f60;
+    margin-bottom: 35px;
+    font-family: 'Open Sans', Arial, sans-serif;
+  }
+
+  ul.uk-thumbnav li{
+    display:table;
+    margin:10px auto 10px auto;
+  }
+  /*FOR THIS PAGE ONLY*/
+  body {
+    background: #f8f6eb;
+  }
+
+:javascript
+  // Called directly with HTML
+  $(".myElement").colorbox({html:"<h1>Welcome</h1>"});
   
 

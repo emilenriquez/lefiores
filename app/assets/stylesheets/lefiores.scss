@@ -1,9 +1,13 @@
 body {
-  background-color: #fff;
+  background: #f8f6eb;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+
+  
+  
+  
 }
 
 h2.head-title {
@@ -23,17 +27,27 @@ a:hover{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px);
+	filter: blur(2px);
 
 }
 
-/*
-.uk-homepage-background .uk-container .uk-form{
-	background-color: rgba(0, 0, 0, 0.70);
-	padding: 20px 20px 50px 20px;
-	border-radius: 15px;
-	max-width:70%;
-	margin:0 auto;
-}*/
+.content {
+  
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  top: 13em;
+  left: 0;
+  position: absolute;
+  margin-left: 20px;
+  margin-right: 20px;
+  right: 0;
+  
+}
 
 .lightbox{
 	background-color: rgba(0, 0, 0, 0.70);
@@ -69,13 +83,19 @@ a:hover{
  padding: 0 0 0 10px;
 }
 
-nav.uk-navbar {
-	background-color: #FFFFFF;
-	height: 100px;
+nav.uk-navbar {	
+	background:transparent !important;
+	min-height: 50px;
 }
 
 ul.uk-navbar-nav{
 	float:right !important;
+}
+
+.uk-container-full-width.lefiores-header{  
+  z-index: 99;
+  background-color: #fcfcf7;
+  box-shadow: 0 5px 5px rgba(0,0,0,.05);
 }
 
 .lefiores-subnav {
@@ -123,4 +143,10 @@ ul.uk-navbar-nav{
     font-size: 13px;
     line-height: 13px;
     color: #999;
+}
+
+.uk-tab > li.uk-active > a {
+  border-color: #FBF8F8 #FDFBFB transparent !important;
+  background: #00a8e6 !important; 
+  color: #fff !important; 
 }

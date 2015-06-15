@@ -1,73 +1,78 @@
-%nav.uk-navbar
-  =link_to root_url,:class => "uk-navbar-brand" do
-    .uk-float-left=image_tag asset_path('logo-lefiores-the-florist-marketplace.png')
-  %ul.uk-navbar-nav
-    -if current_user.present?
-
-      .uk-navbar-content.uk-navbar-flip.uk-hidden-small
-        -#
+.uk-container-full-width.lefiores-header
+  .uk-container.uk-container-center
+    %nav.uk-navbar
+      =link_to root_url,:class => "uk-navbar-brand" do
+        =image_tag asset_path('logo-lefiores-the-florist-marketplace.png'), :width => "150px"
+      -if current_user.present?
+        %ul.uk-navbar-nav
+        
+          .uk-navbar-content.uk-navbar-flip.uk-hidden-small
+            -#
+              - if !@store_branches.nil? && @store.has_branch?
+                -if current_user.has_store && current_user.role == :florist 
+                  You are viewing branch: 
+                  .uk-button-dropdown{"data-uk-dropdown" => ""}
+                    .uk-button-group
+                      %button.uk-button.uk-button-success
+                        - if @branch.present?
+                          = @branch.sub_name
+                      %div.data-uk-dropdown
+                        %a.uk-button.uk-button-success
+                          %i.uk-icon-caret-down                             
           - if !@store_branches.nil? && @store.has_branch?
             -if current_user.has_store && current_user.role == :florist 
               You are viewing branch: 
               .uk-button-dropdown{"data-uk-dropdown" => ""}
                 .uk-button-group
                   %button.uk-button.uk-button-success
-                    - if @branch.present?
+                    -if @branch.present?
                       = @branch.sub_name
+                    -else
+                      = Store::Branch.where(:id => @store.current_branch_id).first.sub_name
                   %div.data-uk-dropdown
                     %a.uk-button.uk-button-success
-                      %i.uk-icon-caret-down                             
-      - if !@store_branches.nil? && @store.has_branch?
-        -if current_user.has_store && current_user.role == :florist 
-          You are viewing branch: 
+                      %i.uk-icon-caret-down                              
+                -if @store_branches.size > 1                                    
+                  .uk-dropdown
+                    %ul.uk-nav.uk-nav-dropdown                 
+                      -@store_branches.each do |branch|           
+                        %li
+                          %a{:href => "/store/dashboard"}                   
+                            = branch.sub_name                  
+
           .uk-button-dropdown{"data-uk-dropdown" => ""}
+            %button.uk-button
+              %i.uk-icon-ellipsis-v          
+            .uk-dropdown
+              %ul.uk-nav.uk-nav-dropdown
+                -if current_user.has_store && current_user.role == :florist
+                  %li
+                    %a{:href => "/store/dashboard"} 
+                      %i.uk-icon-money 
+                      My Store            
+                -if current_user.role == :admin
+                  %li
+                    %a{:href => "/admin"} 
+                      %i.uk-icon-money 
+                      Admin Panel            
+                %li
+                  %a{:href => "/logout"} 
+                    %i.uk-icon-sign-out 
+                    Logout
+          
+      -else   
+        .uk-navbar-flip
+          %ul.uk-navbar-nav            
+            %li              
+              %a{:href => "/login", :style => "font-weight: 700"}                 
+                Florist Login        
+          
+          
+          -#
             .uk-button-group
-              %button.uk-button.uk-button-success
-                -if @branch.present?
-                  = @branch.sub_name
-                -else
-                  = Store::Branch.where(:id => @store.current_branch_id).first.sub_name
-              %div.data-uk-dropdown
-                %a.uk-button.uk-button-success
-                  %i.uk-icon-caret-down                              
-            -if @store_branches.size > 1                                    
-              .uk-dropdown
-                %ul.uk-nav.uk-nav-dropdown                 
-                  -@store_branches.each do |branch|           
-                    %li
-                      %a{:href => "/store/dashboard"}                   
-                        = branch.sub_name                  
 
-      .uk-button-dropdown{"data-uk-dropdown" => ""}
-        %button.uk-button
-          %i.uk-icon-ellipsis-v          
-        .uk-dropdown
-          %ul.uk-nav.uk-nav-dropdown
-            -if current_user.has_store && current_user.role == :florist
-              %li
-                %a{:href => "/store/dashboard"} 
-                  %i.uk-icon-money 
-                  My Store            
-            -if current_user.role == :admin
-              %li
-                %a{:href => "/admin"} 
-                  %i.uk-icon-money 
-                  Admin Panel            
-            %li
-              %a{:href => "/logout"} 
-                %i.uk-icon-sign-out 
-                Logout
-      
-    -else
-      %ul.uk-subnav.uk-subnav-pill.lefiores-subnav
-        %li
-          %a{:href => "/login"} Florist Login
-      
-      -#
-        .uk-button-group
-
-          %a.uk-button.uk-button-primary{:href => "/register?type=florist"} Florist
-          %a.uk-button.uk-button-primary{:href => "/users/new?type=user"} Customer
-        
-        -#%button.uk-button.uk-button-primary Login
-      
+              %a.uk-button.uk-button-primary{:href => "/register?type=florist"} Florist
+              %a.uk-button.uk-button-primary{:href => "/users/new?type=user"} Customer
+            
+            -#%button.uk-button.uk-button-primary Login
+          
