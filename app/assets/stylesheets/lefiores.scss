@@ -150,3 +150,90 @@ ul.uk-navbar-nav{
   background: #00a8e6 !important; 
   color: #fff !important; 
 }
+
+.lefiores-breadcrumb{
+  background-color: #fff;
+  border: 1px solid #f3f1e6;
+  border-radius: 0;
+  padding: 12px 20px !important;
+  text-transform: uppercase;
+}
+/*
+Product info css
+*/
+.lefiores-product-info{
+	font-family: 'Open Sans', Arial, sans-serif;
+	padding-bottom: 7px;
+  
+}
+
+.lefiores-product-info h1 {
+  border-bottom: 1px solid #d8d6cc;
+  margin-bottom: 20px;
+  padding-bottom: 25px;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #968e5f;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-family: 'Open Sans', Arial, sans-serif;
+  
+}
+
+.lefiores-product-info .lefiores-description .lefiores-product-section {
+  color: #909090;
+  text-transform: uppercase;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+.lefiores-product-info .lefiores-description .lefiores-product-section a {
+  color: #968e5f;
+}
+.lefiores-product-info .lefiores-description .lefiores-product-section span {
+  color: #6c6c6c;
+}
+.lefiores-product-info .lefiores-price {
+  text-transform: uppercase;
+  font-size: 13px;
+  border-top: 1px solid #d8d6cc;
+  padding: 23px 0;
+  margin-bottom: 20px;
+}
+
+/*PRICE*/
+.lefiores-product-info .lefiores-text-price {
+  color: #6c6c6c;
+  margin-right: 5px;
+  font-family: 'Open Sans',Arial,sans-serif;
+}
+
+.lefiores-product-info .lefiores-price .lefiores-price-val {
+  font-size: 26px;
+  margin-right: 8px;
+  font-family: 'Lobster',Arial,cursive;
+  line-height: 31px;
+  color: #eb5f60;
+}
+
+.lefiores-tabs .lefiores-tab-heading {
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  text-align: center;
+  background: #eb5f60;
+  margin-bottom: 35px;
+}
+.lefiores-tabs .lefiores-tab-content{
+	color: #909090;
+}
+.lefiores-calendar{
+	background-color: white;
+}
+.lefiores-calendar .uk-panel.uk-panel-box{
+	background-color: transparent;
+}
+

@@ -83,6 +83,10 @@ Rails.application.routes.draw do
   ######## for users
   #search flower shops by zipcode
 
+  #namespace :store do#
+  #
+  #end
+  get '/product/:id/show' => 'store/products#show'
 
   namespace :admin do
     root 'welcome#index'

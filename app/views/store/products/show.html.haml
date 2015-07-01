@@ -1,0 +1,68 @@
+.uk-container.uk-container-center
+  %ul.uk-breadcrumb.lefiores-breadcrumb
+    %li
+      = link_to 'home', '/'
+    %li.uk-active
+      %span
+        = @product.name
+
+  .uk-grid
+    .uk-width-2-10
+      =image_tag @product.pic.m300x320.url, :title => @product.name
+    .uk-width-8-10
+      .lefiores-product-info
+        .uk-width-1-1
+          %h1
+            =@product.name
+          .lefiores-description
+            .lefiores-product-section
+              %span
+                Florist Name:
+              = link_to @product.store.name, '/florist/' + @product.store.page_url
+              %br
+              %span
+                Product ID:
+              = @product.product_id
+              %br
+              %span
+                Category:
+              .uk-badge.uk-badge-success
+                = @product.category.name
+            .lefiores-price
+              %span.lefiores-text-price
+                Price:
+              %span.lefiores-price-val
+                RM
+                =@product.price
+    .uk-width-1-1.lefiores-tabs          
+      .lefiores-tab-heading
+        DESCRIPTION
+      .lefiores-tab-content
+        =@product.description
+    .uk-width-1-1.lefiores-tabs.uk-margin-large-top
+      .lefiores-tab-heading
+        SCHEDULE YOUR DELIVERY
+      .lefiores-tab-content
+        .lefiores-calendar
+          .tm-grid-truncate.uk-grid.uk-grid-divider.uk-text-center{"data-uk-grid-margin" => ""}
+            .uk-width-medium-1-5
+              .uk-panel.uk-panel-box
+                %h2
+                  Thursday
+                %br
+                July 2, 2015
+            .uk-width-medium-1-5
+              .uk-panel.uk-panel-box
+                2
+            .uk-width-medium-1-5
+              .uk-panel.uk-panel-box
+                3
+            .uk-width-medium-1-5
+              .uk-panel.uk-panel-box
+                4
+            .uk-width-medium-1-5
+              .uk-panel.uk-panel-box
+                5
+
+
+

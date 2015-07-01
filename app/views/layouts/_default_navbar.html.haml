@@ -42,7 +42,7 @@
 
           .uk-button-dropdown{"data-uk-dropdown" => ""}
             %button.uk-button
-              %i.uk-icon-ellipsis-v          
+              %i.uk-icon-ellipsis-v{:style => "line-height: 50px;"}          
             .uk-dropdown
               %ul.uk-nav.uk-nav-dropdown
                 -if current_user.has_store && current_user.role == :florist

@@ -82,6 +82,13 @@ class UsersController < ApplicationController
     end
   end
 
+  #show product
+  #GET /product/id
+  def show_product
+    product_id = params[:product_id]
+    PRODUCT
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
